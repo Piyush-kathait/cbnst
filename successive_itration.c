@@ -1,29 +1,35 @@
-#include<stdio.h>
-#include<math.h>
-#define e 0.0002
-#define f(x) x*x*x - x*x - 1
-#define g(x) 1/pow((1+x),0.5)
+#include <stdio.h>
+#include <math.h>
+#define f(x) cos(x) - 3 * x + 1
+#define g(x) (1 + cos(x)) / 3
 int main()
 {
-	float x0,x1,x2,x,m;
-	int i=0;
-	int a = pow(2,3);
-	while(f(i)>0)
-	{
-		i++;
-	}
-	x0 = i;
-	i=0;
-	while(f(i)<0)
-	{
-		i++;
-	}
-	x1 = 1,x2 = (x1+x0)/2;
-	do
-	{	m = x;
-		x = g(x2);
-		printf("Root is  %f\n",x);
-		x2 = x;
-	}while(m!=x);
-	printf("Final Root is  %f\n",x);
+    int step = 1, N;
+    float x0, x1, e;
+
+    printf("Enter initial guess: ");
+    scanf("%f", &x0);
+    printf("Enter tolerable error: ");
+    scanf("%f", &e);
+    printf("Enter maximum iterations: ");
+    scanf("%d", &N);
+
+    printf("\nStep\tx0\t\n(x0)\tx1\t\n(x1)\n");
+    do
+    {
+        x1 = g(x0);
+        printf("%d\t%f\t%f\t%f\t%f\n", step, x0, f(x0), x1, f(x1));
+        step = step + 1;
+
+        if (step > N)
+        {
+            printf("Not Convergent.");
+            break;
+        }
+
+        x0 = x1;
+
+    } while (fabs(f(x1)) > e);
+    printf("\nRoot is %f", x1);
+    return 0;
 }
