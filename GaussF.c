@@ -5,16 +5,15 @@
 void main()
 {
     float ax[MAXN + 1], ay[MAXN], diff[MAXN][ORDER + 1], x, p, h, y1, y2, y3, y4, y;
-    int n, i, j, k;
+    int n, i, j;
     printf("\nEnter the value of n:\n");
     scanf("%d", &n);
-    printf("\nEnter the values in form x,y:\n");
+    printf("\nEnter the values in form x, y:\n");
     for (i = 0; i < n; i++)
     {
         scanf("%f %f", &ax[i], &ay[i]);
     }
-    printf("\nEnter the value of x for");
-    printf("\nwhich you want the value of y - ");
+    printf("\nEnter the value of x for which you want the value of y - ");
     scanf("%f", &x);
     h = ax[1] - ax[0];
     for (i = 0; i < n - 1; i++)
@@ -40,5 +39,6 @@ void main()
     y3 = (p + 1) * p * (p - 1) * diff[i - 2][3] / 6;
     y4 = (p + 1) * p * (p - 1) * (p - 2) * diff[i - 3][4] / 24;
     y = ay[i] + y1 + y2 + y3 + y4;
-    printf("\nwhen x=%6.4f,y=%6.8f ", x, y);
+
+    printf("\nWhen x = %6.4f, y = %6.8f\n", x, y);
 }
