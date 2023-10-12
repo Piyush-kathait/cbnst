@@ -9,15 +9,23 @@ int main()
     scanf("%d", &n);
     printf("\nEnter the values in form x,y:\n");
     for (i = 0; i < n; i++)
+    {
         scanf("%f %f", &ax[i], &ay[i]);
+    }
     printf("\nEnter the value of x for which the value of y is wanted: \n");
     scanf("%f", &x);
     h = ax[1] - ax[0];
     for (i = 0; i <= n - 1; i++)
+    {
         diff[i][1] = ay[i + 1] - ay[i];
+    }
     for (j = 2; j <= ORDER; j++)
+    {
         for (i = 0; i <= n - j; i++)
+        {
             diff[i][j] = diff[i + 1][j - 1] - diff[i][j - 1];
+        }
+    }
     i = 0;
     while (!(ax[i] > x))
         i++;
