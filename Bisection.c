@@ -17,7 +17,6 @@ int main()
         i++;
     }
     b = f(i), i = 0;
-    printf("Name: Anurag Kukreti\n");
     printf("a = %f\nb = %f", a, b);
     do
     {
@@ -34,7 +33,7 @@ int main()
             a = m;
         }
         i++;
-        printf("No of steps are %d\n", i);
+        printf("step %d\n", i);
         printf("Roots are %f\n", m);
         printf("Value of Function is %f\n", f2);
     } while (fabs(f2) > e);
