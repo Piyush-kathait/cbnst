@@ -1,41 +1,44 @@
 #include <stdio.h>
 #include <math.h>
-#define e 0.02
-#define f(x) x *x *x - 4 * x - 9
+#define f(x) cos(x) - x *exp(x)
+#define e 0.0001
 int main()
 {
-    float a, b, m, f0, f2, f1;
-    int i = 1;
+    float x0, x1, x2, f0, f1, f2;
+    int step = 1;
+    int i = 0;
     while (f(i) > 0)
     {
         i++;
     }
-    a = f(i);
-    i = 1;
+    x0 = i;
+    f0 = f(x0);
+    i = 0;
     while (f(i) < 0)
     {
         i++;
     }
-    b = f(i), i = 0;
-    printf("a = %f\nb = %f", a, b);
+    x1 = i;
+    f1 = f(x1);
+    printf("\nStep\t\tx0\t\tx1\t\tx2\t\n(x2)\n");
     do
     {
-        f0 = f(a);
-        f1 = f(b);
-        m = (a + b) / 2;
-        f2 = f(m);
+        x2 = (x0 + x1) / 2;
+        f2 = f(x2);
+        printf("%d\t\t%f\t%f\t%f\t%f\n", step, x0, x1, x2, f2);
         if (f0 * f2 < 0)
         {
-            b = m;
+            x1 = x2;
+            f1 = f2;
         }
-        else if (f(m) * f(b) < 0)
+        else
         {
-            a = m;
+            x0 = x2;
+            f0 = f2;
         }
-        i++;
-        printf("step %d\n", i);
-        printf("Roots are %f\n", m);
-        printf("Value of Function is %f\n", f2);
+
+        step = step + 1;
     } while (fabs(f2) > e);
+    printf("\nRoot is: %f", x2);
     return 0;
 }
