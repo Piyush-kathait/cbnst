@@ -20,7 +20,7 @@ int main()
     }
     x1 = i;
     f1 = f(x1);
-    printf("\nStep\t\tx0\t\tx1\t\tx2\t\n(x2)\n");
+    printf("\nStep\t\tx0\t\tx1\t\tx2\t\t(x2)\n");
     do
     {
         x2 = (x0 + x1) / 2;
